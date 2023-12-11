@@ -46,7 +46,7 @@ const externallApiUri = `https://eventwebapi-carlos.azurewebsites.net`;
 // const externalApiUri = null;
 
 const api = axios.create({
-    baseURL: localApiUri
+    baseURL: externallApiUri
 });
 
 
