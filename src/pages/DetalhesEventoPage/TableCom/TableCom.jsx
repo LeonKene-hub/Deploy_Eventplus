@@ -1,6 +1,5 @@
 import React from "react";
 import "./TableCom.css";
-import { dateFormateDbToView } from "../../../Utils/stringFunctions";
 
 const TableCom = ({ nome, descricao, tipo, data, comentarios }) => {
   return (
@@ -24,7 +23,6 @@ const TableCom = ({ nome, descricao, tipo, data, comentarios }) => {
 
           <tr
             className="tbal-data__head-row tbal-data__head-row--red-color"
-            key={Math.random()}
           >
             <th className="tbal-data__head-title tbal-data__head-title--big">
               {nome}
@@ -33,11 +31,11 @@ const TableCom = ({ nome, descricao, tipo, data, comentarios }) => {
               {descricao}
             </th>
             <th className="tbal-data__head-title tbal-data__head-title--big">
-              {/* {evento.tiposEvento.titulo} */}
+              
               {tipo}
             </th>
             <th className="tbal-data__head-title tbal-data__head-title--big">
-              {/* {dateFormateDbToView(evento.dataEvento)} */}
+              
               {data}
             </th>
           </tr>
@@ -45,11 +43,16 @@ const TableCom = ({ nome, descricao, tipo, data, comentarios }) => {
       }
 
       <tbody>
+        <tr className="tbal-data__head-row">
+          <td className="table-data__data table-data__data--little">Usuario</td>
+          <td className="table-data__data table-data__data--little">Comentario</td>
+        </tr>
+
         {comentarios.map((c) => {
           return (
             <tr className="tbal-data__head-row" key={Math.random()}>
-              <td>{c.usuario.nome}</td>
-              <td>{c.descricao}</td>
+              <td className="table-data__data table-data__data--little">{c.usuario.nome}</td>
+              <td className="table-data__data table-data__data--little">{c.descricao}</td>
             </tr>
           );
         })}

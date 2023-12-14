@@ -19,16 +19,12 @@ const DetalhesEventoPage = () => {
 
   const [comentarios, setComentarios] = useState([]);
 
-  let idTeste = "068261f7-69dc-4d31-8c6a-092244040f93";
-
   useEffect(() => {
     async function TrazEvento(id) {
       try {
         //eventos
         const meuEvento = await api.get(`${eventsResource}/${id}`);
-        const meuTipo = await api.get(
-          `${eventsTypeResource}/${meuEvento.data.idTipoEvento}`
-        );
+        const meuTipo = await api.get(`${eventsTypeResource}/${meuEvento.data.idTipoEvento}`);
 
         setNomeEvento(meuEvento.data.nomeEvento);
         setDescricao(meuEvento.data.descricao);
@@ -37,7 +33,7 @@ const DetalhesEventoPage = () => {
 
         const meusComentarios = await api.get(`${listOnlyResource}${id}`);
         setComentarios(meusComentarios.data);
-        
+
       } catch (error) {
         console.log("Erro ao trazer evento, DetalhesEventoPage");
       }
