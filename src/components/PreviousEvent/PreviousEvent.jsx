@@ -1,13 +1,19 @@
 import React from "react";
-import "./PreviousEvent.css"
+import "./PreviousEvent.css";
 
 import { Tooltip } from "react-tooltip";
+import { Link } from "react-router-dom";
 import { dateFormatDbToView } from "../../Utils/stringFunctions";
+import { useParams } from "react-router-dom";
 
 const PreviousEvent = ({ title, description, eventDate, idEvent }) => {
-    function visualizar(idEvent) {
-        alert(`Chamar o recurso para visualizar: ${idEvent}`);
-    }
+
+  const { idEvento } = useParams();
+
+  function visualizar(idEvent) {
+    <Link to={`/detalhes-evento/${idEvent}`}></Link>;
+  }
+
   return (
     <article className="event-card">
       <h2 className="event-card__title">{title}</h2>
@@ -22,18 +28,14 @@ const PreviousEvent = ({ title, description, eventDate, idEvent }) => {
         {description.substr(0, 15)} ...
       </p>
 
-      <p className="event-card__description">
-        {dateFormatDbToView(eventDate)}
-      </p>
+      <p className="event-card__description">{dateFormatDbToView(eventDate)}</p>
 
-      <a
-        onClick={() => {
-            visualizar(idEvent);
-        }}
+      <Link
+        to={`/detalhes-evento/${idEvent}`}
         className="event-card__connect-link"
       >
         Visualizar
-      </a>
+      </Link>
     </article>
   );
 };
